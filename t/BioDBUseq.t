@@ -7,13 +7,16 @@ use Test;
 use FindBin '$Bin';
 
 BEGIN {
-	plan tests => 20,
+	plan tests => 25,
 }
 
 use lib "$Bin/../lib";
 use Bio::DB::USeq qw(binMean binStdev);
 
-my $file = "$Bin/data/sample.useq";
+my $file = "$Bin/data/sample1.useq";
+
+
+#### Test scores ####
 
 # initialize and open file
 my $useq = Bio::DB::USeq->new($file);
@@ -86,6 +89,33 @@ my $second_stdev = binStdev( $stats->[1] );
 # print "Second interval stdev is $second_stdev\n"; 
 ok(sprintf("%.2f", $second_mean), '0.60');
 ok(sprintf("%.2f", $second_stdev), 0.62);
+
+
+
+#### Test region text ####
+
+# reopen new file
+$file = "$Bin/data/sample2.useq";
+undef $useq;
+$useq = Bio::DB::USeq->new(-file => $file);
+ok($useq);
+die "unable to open useq file!\n" unless $useq;
+
+# get stream of regions
+my $stream = $useq->get_seq_stream(
+	-seq_id     => 'chrI',
+	-start      => 20000,
+	-end        => 20200,
+);
+ok($stream);
+my @samples = map {$stream->next_seq} (1..5);
+ok(scalar @samples, 5);
+
+# check names
+# print "first sample is ", $samples[0]->display_name, "\n";
+# print "last sample is ", $samples[-1]->display_name, "\n";
+ok($samples[0]->display_name, 'HWI-EAS240_0001:7:87:16824:7895#0/1');
+ok($samples[-1]->display_name, 'HWI-EAS240_0001:7:72:3375:4012#0/1');
 
 
 exit 0;

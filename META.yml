@@ -4,9 +4,9 @@ author:
   - 'Timothy Parnell <parnell.tj@gmail.com>'
 build_requires: {}
 configure_requires:
-  Module::Build: 0.40
+  Module::Build: 0.4
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.112621'
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.112150'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,7 +15,7 @@ name: Bio-DB-USeq
 provides:
   Bio::DB::USeq:
     file: lib/Bio/DB/USeq.pm
-    version: 0.19
+    version: 0.20
   Bio::DB::USeq::Feature:
     file: lib/Bio/DB/USeq.pm
     version: 0
@@ -36,4 +36,4 @@ requires:
   Bio::Root::Version: 1.0069001
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.19
+version: 0.20

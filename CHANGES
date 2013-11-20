@@ -1,5 +1,8 @@
 Bio::DB::USeq Change Log
 
+0.20    * Added support for text strings (name field) in USeq files.
+        * Some documentation changes.
+
 0.19    * Additional minor fixes
         * Added more complete documentation
 

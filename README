@@ -29,16 +29,19 @@ uses the interbase coordinate system.
 Unlike wig and bigWig files, useq file archives support stranded data, 
 which can make data collection simpler for complex experiments.
 
-GBrowse compatibility is limited. It will support generic glyphs 
-for interval or segmented data. For graphs, it supports the 
-wiggle_xyplot glyph. Data may be returned in bins for large queries, 
-simplifying and reducing server load. It supports local autoscale, 
-but not chromosomal or genome autoscale, nor z-score scaling.
+GBrowse compatibility is fully supported. It will work with the segments 
+glyph for intervals, the wiggle_xyplot glyph for displaying mean scores, 
+and the wiggle_whiskers glyph for displaying detailed statistics. For 
+stranded quantitative data sets, two graphs will be generated for each 
+strand.  
+
 
 
 LIMITATIONS
 
-This adaptor is read only. USeq files are not modified or written.
+This adaptor is read only. USeq files in general are not modified or 
+written, although chromosome specific statistics may be written to 
+the metadata for persistence.
 
 No support for genomic sequence is included. Users who need access to 
 genomic sequence should seek an alternative BioPerl adaptor, such as 
@@ -46,14 +49,9 @@ Bio::DB::Fasta.
 
 Useq files do not have the concept of type, primary_tag, or source 
 attributes, as expected with GFF-based database adaptors. However, 
-special feature types are supported, including binned wiggle data, 
-for data access.
+special feature types are supported, including binned wiggle 
+and summary features, for data access.
 
-Currently, Bio::DB::USeq can only parse files that do not contain 
-text strings. This is a technical limitation in unpacking the binary Java 
-text strings. Hence, useq files derived from Bed files with names cannot be 
-parsed, but wig, bedGraph, and simple bed files may be parsed, as well as 
-those derived from native USeq Bar files.
 
 
 INSTALLATION

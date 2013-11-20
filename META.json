@@ -4,7 +4,7 @@
       "Timothy Parnell <parnell.tj@gmail.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.112621",
+   "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.40"
+            "Module::Build" : "0.4"
          }
       },
       "runtime" : {
@@ -29,7 +29,7 @@
    "provides" : {
       "Bio::DB::USeq" : {
          "file" : "lib/Bio/DB/USeq.pm",
-         "version" : "0.19"
+         "version" : "0.20"
       },
       "Bio::DB::USeq::Feature" : {
          "file" : "lib/Bio/DB/USeq.pm",
@@ -58,5 +58,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.19"
+   "version" : "0.20"
 }
