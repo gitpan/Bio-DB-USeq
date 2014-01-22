@@ -1,5 +1,8 @@
 Bio::DB::USeq Change Log
 
+0.21    * Set requirement for Perl 5.10.0. Will not compile on lower versions.
+        * Fixed some POD formatting.
+
 0.20    * Added support for text strings (name field) in USeq files.
         * Some documentation changes.
 

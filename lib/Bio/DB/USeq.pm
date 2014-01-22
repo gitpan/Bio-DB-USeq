@@ -1,6 +1,6 @@
 package Bio::DB::USeq;
 
-our $VERSION = '0.20';
+our $VERSION = '0.21';
 
 =head1 NAME
 
@@ -107,7 +107,7 @@ Bio::DB::USeq - Read USeq archive database files
 
 =head1 DESCRIPTION
 
-C<Bio::DB::USeq> is a C<BioPerl> style adaptor for reading USeq files. USeq files 
+Bio::DB::USeq is a B<BioPerl> style adaptor for reading USeq files. USeq files 
 are compressed, indexed data files supporting modern bioinformatic datasets, 
 including genomic points, scores, and intervals. More information about the 
 format can be found at L<http://useq.sourceforge.net/useqArchiveFormat.html>. 
@@ -120,12 +120,12 @@ text Wig files, text Bed files, and UCSC bigWig and bigBed file formats.
 
 =head2 Compatibility
 
-The adaptor follows most conventions of other C<BioPerl>-style Bio::DB 
+The adaptor follows most conventions of other B<BioPerl>-style Bio::DB 
 adaptors. Observations or features in the useq file archive are 
 returned as SeqFeatureI compatible objects. 
 
 Coordinates consumed and returned by the adaptor are 1-based, consistent 
-with C<BioPerl> convention. This is not true of the useq file itself, which 
+with B<BioPerl> convention. This is not true of the useq file itself, which 
 uses the interbase coordinate system.
 
 Unlike wig and bigWig files, useq file archives support stranded data, 
@@ -137,11 +137,11 @@ See below for GBrowse compatibility.
 
 This adaptor is read only. USeq files, in general, are not modified 
 or written with data. The exceptions are chromosome or global statistics 
-are written to the C<archiveReadMe.txt> file inside the zip archive to 
+are written to the F<archiveReadMe.txt> file inside the zip archive to 
 cache for future queries.
 
 No support for genomic sequence is included. Users who need access to 
-genomic sequence should seek an alternative C<BioPerl> adaptor, such as 
+genomic sequence should seek an alternative B<BioPerl> adaptor, such as 
 L<Bio::DB::Fasta>.
 
 Useq files do not have a native concept of type, primary_tag, or source 
@@ -152,14 +152,14 @@ method does support special types (see below).
 
 The adaptor is a Perl-only implementation. It only requires the 
 L<Archive::Zip> module for opening and reading the useq file archive. 
-C<BioPerl> is required for working with SeqFeatures objects generated 
+B<BioPerl> is required for working with SeqFeatures objects generated 
 from useq file observations.
 
 =head1 METHODS
 
 =head2 Initializing the Bio::DB::USeq object
 
-These are class methods for creating and working with the C<Bio::DB::USeq> 
+These are class methods for creating and working with the Bio::DB::USeq 
 object itself.
 
 =over 4
@@ -170,7 +170,7 @@ object itself.
 
 =item new(-useq => $file)
 
-This will create a new C<Bio::DB::USeq> object. Optionally pass the path 
+This will create a new Bio::DB::USeq object. Optionally pass the path 
 to a useq file archive to open immediately. There is not much to do 
 unless you open a file.
 
@@ -225,13 +225,13 @@ useq file archive are recorded in a stranded fashion.
 =item attributes
 
 Return an array of available attribute keys that were recorded in the 
-useq file C<archiveReadMe.txt> member. These are key = value pairs 
+useq file F<archiveReadMe.txt> member. These are key = value pairs 
 representing metadata for the useq file. 
 
 =item attribute($key)
 
 Return the metadata attribute value for the specified key. These 
-are recorded in the useq file C<archiveReadMe.txt> member. 
+are recorded in the useq file F<archiveReadMe.txt> member. 
 
 =item type
 
@@ -250,7 +250,7 @@ Return the useq file metadata C<useqArchiveVersion> value.
 =head2 Data accession
 
 These are the primary methods for working with data contained in 
-useq file archive. These should be familiar to most C<BioPerl> users. 
+useq file archive. These should be familiar to most B<BioPerl> users. 
 
 =over 4
 
@@ -277,7 +277,7 @@ more keyed values.
 If the -iterator argument is supplied with a true value, then an 
 iterator object is returned. See get_seq_stream() for details.
 
-C<Bio::DB::USeq> supports four different feature types. Feature 
+Bio::DB::USeq supports four different feature types. Feature 
 types may be specified using the -type argument.
 
 =over 4
@@ -426,7 +426,7 @@ features() method. Stranded data collection is supported.
 
 =item segment
 
-This returns a C<Bio::DB::USeq::Segment> object, which is a SeqFeatureI 
+This returns a L<Bio::DB::USeq::Segment> object, which is a SeqFeatureI 
 compatible segment object corresponding to the specified coordinates. 
 From this object, one can call the features(), scores(), or 
 get_seq_stream() methods directly. Keyed options or location 
@@ -451,8 +451,11 @@ Convenience method for returning features restricted by location.
 =item get_feature_by_name
 
 Compatibility methods for returning a specific feature or 
-observation in the USeq file. Since text names are not supported, 
-currently an ID or name comprised of "chromosome:start:end".
+observation in the USeq file. Text fields, if present, are not 
+indexed in the USeq file, preventing efficient searching of names. 
+As a workaround, an ID or name comprised of "$seq_id:$start:$end" 
+may be used, although a direct search of coordinates would be 
+more efficient.
 	
 	my $feature = $useq->get_feature_by_id("$seq_id:$start:$end");
 	
@@ -501,7 +504,7 @@ or interval. These support the following methods.
 =item scores
 
 Direct methods for returning features or scores. Coordinate information 
-need not be provided. See the corresponding C<Bio::DB::USeq> methods for 
+need not be provided. See the corresponding Bio::DB::USeq methods for 
 more information.
 
 =item wiggle
@@ -668,7 +671,7 @@ accessing information about each slice. In general, accessing
 data through slices is a lower level operation. Users should 
 preferentially use the main data accessors.
 
-The following are C<Bio::DB::USeq> methods available for working 
+The following are Bio::DB::USeq methods available for working 
 with slices.
 
 =over 4
@@ -680,7 +683,7 @@ useq archive file.
 
 =item slice_feature($slice)
 
-Return a C<Bio::DB::USeq::Segment> object representing the slice interval. 
+Return a L<Bio::DB::USeq::Segment> object representing the slice interval. 
 The features(), get_seq_stream(), and scores() methods are supported.
 
 =item slice_seq_id($slice)
@@ -727,37 +730,37 @@ Initialize the USeq database adaptor.
     db_args       = -file /path/to/data1.useq
 
 Displaying simple intervals with the segments glyph.
-	
-	[data1_segments]
-	database      = data1
-	feature       = region
-	glyph         = segments
-	stranded      = 1
-	
+    
+    [data1_segments]
+    database      = data1
+    feature       = region
+    glyph         = segments
+    stranded      = 1
+
 Displaying scores using the wiggle_xyplot glyph. 
 You may set the bins to whatever number is appropriate (in 
 this example, 1000), or leave blank (not recommended, 
 defaults to 1 bp resolution).
-	
-	[data1_xyplot]
-	database      = data1
-	feature       = wiggle:1000
-	glyph         = wiggle_xyplot
-	graph_type    = histogram
-	autoscale     = chromosome
+    
+    [data1_xyplot]
+    database      = data1
+    feature       = wiggle:1000
+    glyph         = wiggle_xyplot
+    graph_type    = histogram
+    autoscale     = chromosome
 
 Displaying scores using the wiggle_whiskers glyph. Note that 
 generating statistical summaries are computationally more expensive 
 than simple bins of mean values as with the wiggle feature type.
-	
-	[data1_whiskers]
-	database      = data1
-	feature       = summary
-	glyph         = wiggle_whiskers
-	graph_type    = histogram
-	autoscale     = chromosome
+    
+    [data1_whiskers]
+    database      = data1
+    feature       = summary
+    glyph         = wiggle_whiskers
+    graph_type    = histogram
+    autoscale     = chromosome
 
-Because the C<Bio::DB::USeq> is implemented as a Perl-only module, 
+Because the Bio::DB::USeq is implemented as a Perl-only module, 
 performance is subject to the limitations of Perl execution itself and 
 the size of the data that needs to be parsed. In general, using the 
 wiggle feature type is slightly faster than the summary feature type. 
@@ -767,7 +770,7 @@ BigWig file, particularly when viewing large intervals.
 
 
 
-
+require 5.010000;
 use strict;
 use Carp qw(carp cluck croak confess);
 use Archive::Zip qw( :ERROR_CODES );
