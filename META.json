@@ -4,7 +4,7 @@
       "Timothy Parnell <parnell.tj@gmail.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.112621",
+   "generated_by" : "Module::Build version 0.4205",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build" : 0
+            "Module::Build" : "0"
          }
       },
       "runtime" : {
@@ -30,27 +30,22 @@
    "provides" : {
       "Bio::DB::USeq" : {
          "file" : "lib/Bio/DB/USeq.pm",
-         "version" : "0.21"
+         "version" : "0.22"
       },
       "Bio::DB::USeq::Feature" : {
-         "file" : "lib/Bio/DB/USeq.pm",
-         "version" : 0
+         "file" : "lib/Bio/DB/USeq.pm"
       },
       "Bio::DB::USeq::Iterator" : {
-         "file" : "lib/Bio/DB/USeq.pm",
-         "version" : 0
+         "file" : "lib/Bio/DB/USeq.pm"
       },
       "Bio::DB::USeq::Segment" : {
-         "file" : "lib/Bio/DB/USeq.pm",
-         "version" : 0
+         "file" : "lib/Bio/DB/USeq.pm"
       },
       "Bio::DB::USeq::Summary" : {
-         "file" : "lib/Bio/DB/USeq.pm",
-         "version" : 0
+         "file" : "lib/Bio/DB/USeq.pm"
       },
       "Bio::DB::USeq::Wiggle" : {
-         "file" : "lib/Bio/DB/USeq.pm",
-         "version" : 0
+         "file" : "lib/Bio/DB/USeq.pm"
       }
    },
    "release_status" : "stable",
@@ -59,5 +54,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.21"
+   "version" : "0.22"
 }

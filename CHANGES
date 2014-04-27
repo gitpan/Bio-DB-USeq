@@ -1,5 +1,7 @@
 Bio::DB::USeq Change Log
 
+0.22    * Added missing POD documentation
+
 0.21    * Set requirement for Perl 5.10.0. Will not compile on lower versions.
         * Fixed some POD formatting.
 

@@ -6,7 +6,7 @@ build_requires: {}
 configure_requires:
   Module::Build: 0
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.112621'
+generated_by: 'Module::Build version 0.4205, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,7 +15,7 @@ name: Bio-DB-USeq
 provides:
   Bio::DB::USeq:
     file: lib/Bio/DB/USeq.pm
-    version: 0.21
+    version: 0.22
   Bio::DB::USeq::Feature:
     file: lib/Bio/DB/USeq.pm
     version: 0
@@ -37,4 +37,4 @@ requires:
   perl: v5.10.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.21
+version: 0.22

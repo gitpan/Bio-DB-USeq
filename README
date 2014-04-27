@@ -72,8 +72,8 @@ Read the Bio::DB::USeq POD documentation for usage, API details, and
 GBrowse configuration.
 
 To see a practical implementation of Bio::DB::USeq, see the collection of 
-data analysis scripts in the BioToolBox package, available at 
-http://biotoolbox.googlecode.com.
+data analysis scripts in the Bio::ToolBox package, available from your 
+local CPAN mirror and at http://biotoolbox.googlecode.com.
 
 
 
